@@ -106,14 +106,12 @@ def add_student():
     db.session.add(new_student)
     db.session.commit()
     return redirect(url_for('home'))
-
 @app.route('/delete/<int:id>')
 def delete_student(id):
     student = Student.query.get_or_404(id)
     db.session.delete(student)
     db.session.commit()
     return redirect(url_for('home'))
-
 @app.route('/edit/<int:id>', methods=['GET', 'POST'])
 def edit_student(id):
     student = Student.query.get_or_404(id)
@@ -126,3 +124,4 @@ def edit_student(id):
     return render_template_string(EDIT_HTML, student=student)
 if __name__ == '__main__':
     app.run(debug=True)
+
